@@ -1,0 +1,43 @@
+{
+  "name": "consciousness-operating-system",
+  "version": "1.0.0",
+  "description": "Integrated platform combining all symbolic, dream, skill, and meaning work",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "typecheck": "tsc --noEmit",
+    "dev": "ts-node src/index.ts",
+    "start": "node dist/index.js",
+    "serve": "ts-node src/api/express-server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.34.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.3.0",
+    "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.41.0",
+    "@typescript-eslint/parser": "^8.41.0",
+    "eslint": "^9.34.0",
+    "jest": "^30.1.1",
+    "prettier": "^3.6.2",
+    "ts-jest": "^29.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "uuid": "^11.1.0",
+    "zod": "^4.1.5"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
