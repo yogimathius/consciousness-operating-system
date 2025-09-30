@@ -70,7 +70,7 @@ export type ConsciousnessState = z.infer<typeof ConsciousnessStateSchema>;
 
 // Cross-platform integration data
 export const IntegrationDataSchema = z.object({
-  sourceSystem: z.enum(['symbol_quest', 'dream_journal_pro', 'skilltree_platform', 'user_progression', 'mindful_code']),
+  sourceSystem: z.enum(['awakening_codex', 'symbol_quest', 'freeflow_reimagined', 'team_skill_orchestrator', 'consciousness_operating_system']),
   dataType: z.string(),
   payload: z.record(z.string(), z.unknown()),
   timestamp: z.date(),
@@ -79,3 +79,119 @@ export const IntegrationDataSchema = z.object({
 });
 
 export type IntegrationData = z.infer<typeof IntegrationDataSchema>;
+
+// Consciousness Events for real-time orchestration
+export enum ConsciousnessEventType {
+  SPIRITUAL_INSIGHT = 'spiritual_insight',
+  SYMBOL_INTERPRETATION = 'symbol_interpretation',
+  FLOW_STATE_ACHIEVED = 'flow_state_achieved',
+  RITUAL_COMPLETED = 'ritual_completed',
+  TEAM_CONSCIOUSNESS_SHIFT = 'team_consciousness_shift',
+  SYNCHRONICITY_DETECTED = 'synchronicity_detected',
+  GROWTH_MILESTONE = 'growth_milestone',
+  WISDOM_SYNTHESIS = 'wisdom_synthesis'
+}
+
+export const ConsciousnessEventSchema = z.object({
+  id: z.string().uuid(),
+  type: z.nativeEnum(ConsciousnessEventType),
+  userId: z.string().uuid(),
+  teamId: z.string().uuid().optional(),
+  sourceProject: z.enum(['awakening_codex', 'symbol_quest', 'freeflow_reimagined', 'team_skill_orchestrator', 'consciousness_operating_system']),
+  timestamp: z.date(),
+  data: z.record(z.string(), z.unknown()),
+  significance: z.number().min(0).max(1),
+  correlatedEvents: z.array(z.string().uuid()).optional(),
+  propagatedTo: z.array(z.string()).optional(),
+  metadata: z.object({
+    spiritualRelevance: z.number().min(0).max(1),
+    personalRelevance: z.number().min(0).max(1),
+    actionable: z.boolean(),
+    sharable: z.boolean()
+  })
+});
+
+export type ConsciousnessEvent = z.infer<typeof ConsciousnessEventSchema>;
+
+// Unified Consciousness Insight across all projects
+export const UnifiedInsightSchema = z.object({
+  id: z.string().uuid(),
+  userId: z.string().uuid(),
+  type: z.enum(['symbolic', 'spiritual', 'flow', 'team', 'synthetic']),
+  title: z.string(),
+  content: z.string(),
+  sourceProjects: z.array(z.string()),
+  timestamp: z.date(),
+  spiritualSignificance: z.number().min(0).max(1),
+  personalRelevance: z.number().min(0).max(1),
+  actionableSteps: z.array(z.object({
+    project: z.string(),
+    action: z.string(),
+    priority: z.enum(['low', 'medium', 'high']),
+    estimatedImpact: z.number().min(0).max(1)
+  })),
+  crossProjectIntegrations: z.array(z.object({
+    targetProject: z.string(),
+    integrationType: z.string(),
+    data: z.record(z.string(), z.unknown())
+  }))
+});
+
+export type UnifiedInsight = z.infer<typeof UnifiedInsightSchema>;
+
+// Cross-Project User State for orchestration
+export const CrossProjectUserStateSchema = z.object({
+  userId: z.string().uuid(),
+  timestamp: z.date(),
+  awakeningCodexState: z.object({
+    activeRituals: z.array(z.string()),
+    completedRituals: z.number(),
+    spiritualJourneyStage: z.string(),
+    lastRitualDate: z.date().optional()
+  }).optional(),
+  symbolQuestState: z.object({
+    cardsDrawnToday: z.number(),
+    symbolicInsights: z.array(z.string()),
+    symbolDictionary: z.record(z.string(), z.string()),
+    lastCardDraw: z.date().optional()
+  }).optional(),
+  freeflowState: z.object({
+    currentFlowScore: z.number().min(0).max(100),
+    flowSessionsToday: z.number(),
+    optimizationSettings: z.record(z.string(), z.unknown()),
+    lastFlowSession: z.date().optional()
+  }).optional(),
+  teamOrchestratorState: z.object({
+    teamRoles: z.array(z.string()),
+    teamConsciousnessScore: z.number().min(0).max(100),
+    contributionMetrics: z.record(z.string(), z.number()),
+    lastTeamSession: z.date().optional()
+  }).optional(),
+  unifiedConsciousnessScore: z.number().min(0).max(100),
+  activeIntegrations: z.array(z.string()),
+  lastSyncTimestamp: z.date()
+});
+
+export type CrossProjectUserState = z.infer<typeof CrossProjectUserStateSchema>;
+
+// Project Integration Capabilities
+export interface ProjectIntegrationCapability {
+  project: string;
+  endpoint: string;
+  port: number;
+  dataTypes: string[];
+  eventTypes: ConsciousnessEventType[];
+  authRequired: boolean;
+  realTimeCapable: boolean;
+  syncMethods: ('push' | 'pull' | 'bidirectional')[];
+}
+
+// Sacred Technology Configuration
+export interface SacredTechnologyConfig {
+  reverentDataHandling: boolean;
+  privacyFirstArchitecture: boolean;
+  consentBasedIntegration: boolean;
+  spiritualConfidentiality: boolean;
+  meaningfulCoincidenceDetection: boolean;
+  collectiveIntelligenceEnabled: boolean;
+}
